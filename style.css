@@ -1,0 +1,689 @@
+:root {
+  --primary-color: #4CAF50;
+  /* สีเขียวสำหรับปุ่มและไฮไลท์ */
+  --secondary-color: #2196F3;
+  /* สีน้ำเงินสำหรับบางส่วน */
+  --accent-color: #FFC107;
+  /* สีเหลืองสำหรับเน้น */
+  --background-light: #e0f2f7;
+  /* พื้นหลังสีฟ้าอ่อน */
+  --background-dark: #c5e1a5;
+  /* พื้นหลังสีเขียวอ่อน */
+  --text-color: #333;
+  --border-color: #ccc;
+  --card-background: #ffffff;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.2);
+  --shadow-strong: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  font-family: 'Kanit', sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, var(--background-light) 0%, var(--background-dark) 100%);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  /* จัดให้อยู่ด้านบนเมื่อมีเนื้อหาเยอะ */
+  box-sizing: border-box;
+  /* รวม padding ในความกว้าง/สูง */
+}
+
+.main-wrapper {
+  background-color: var(--card-background);
+  width: 100%;
+  max-width: 1380px;
+  /* เพิ่ม max-width เพื่อให้ดูดีบนจอใหญ่ */
+  margin: auto;
+  /* จัดกึ่งกลาง */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* ระยะห่างระหว่างส่วนหลัก */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px var(--shadow-medium);
+}
+
+h1 {
+  color: #2e7d32;
+  /* เขียวเข้มขึ้น */
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+  font-size: 2.5em;
+  /* เพิ่มขนาดหัวข้อ */
+}
+.topbar{
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+}
+.topbar .connect_but {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 20px;
+  height: 50%;
+  border: none;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  font-weight: 500;
+}
+.topbar button:hover {
+  background-color: #43A047;
+  /* เขียวเข้มขึ้นเมื่อโฮเวอร์ */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+.topbar button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.weightsum{
+ background-color:#b5eeb8 ;
+ padding: 30px;
+ border-radius: 10px;
+ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ font-size: 2em;
+}
+.control_analysis {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  /* เพิ่ม max-width เพื่อให้ดูดีบนจอใหญ่ */
+  gap: 30px;
+}
+
+
+h2 {
+  color: #424242;
+  margin-bottom: 15px;
+  font-weight: 500;
+  /* ปรับ font-weight */
+  font-size: 1.8em;
+}
+
+h3 {
+  color: #555;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: 1.3em;
+}
+
+/* Controls Section */
+.controls-section {
+  /* background-color: var(--card-background); */
+  padding: 30px;
+  border-radius: 15px;
+  /* box-shadow: 0 8px 16px var(--shadow-medium); */
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  /* จัดเรียงเป็นคอลัมน์ */
+  align-items: center;
+  gap: 20px;
+  /* ระยะห่างระหว่างกลุ่มควบคุม */
+  width: 100%;
+  max-width: 800px;
+}
+
+.input-group,
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  /* ระยะห่างภายในกลุ่ม */
+  width: 100%;
+}
+
+.controls-section label {
+  font-weight: 500;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.controls-section input[type="number"] {
+  padding: 12px 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 1em;
+  width: 150px;
+  /* เพิ่มความกว้างเล็กน้อย */
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.controls-section input[type="number"]:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.2);
+  outline: none;
+}
+
+.controls-section button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  font-weight: 500;
+}
+
+.controls-section button:hover {
+  background-color: #43A047;
+  /* เขียวเข้มขึ้นเมื่อโฮเวอร์ */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.controls-section button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#recordButton.recording {
+  background-color: #f44336;
+  /* Red for recording */
+}
+
+#recordButton.recording:hover {
+  background-color: #d32f2f;
+}
+
+#stopRecordButton {
+  background-color: #ff9800;
+  /* Orange for stop */
+}
+
+#stopRecordButton:hover {
+  background-color: #fb8c00;
+}
+
+/* Status Message Display */
+.status-message {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: #e8f5e9;
+  /* Light green background */
+  border: 1px solid #a5d6a7;
+  /* Green border */
+  color: #2e7d32;
+  /* Dark green text */
+  font-size: 1.1em;
+  font-weight: 500;
+  min-height: 40px;
+  /* กำหนดความสูงขั้นต่ำ */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.status-message #postureResult {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+
+/* Posture Analysis Section */
+.analysis-section {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 30px;
+}
+
+.posture-analysis-card {
+  background-color: var(--card-background);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px var(--shadow-medium);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.posture-analysis-card h2 {
+  margin-bottom: 20px;
+  color: #3f51b5;
+  /* สีน้ำเงินเข้มสำหรับหัวข้อวิเคราะห์ */
+}
+
+.detailed-probabilities {
+  /* margin-top: 15px; */
+  text-align: left;
+  width: 100%;
+  max-width: 450px;
+  /* จำกัดความกว้างของรายการ */
+  background-color: #e3f2fd;
+  /* Light blue background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.1);
+  color: #424242;
+}
+
+.detailed-probabilities h3 {
+  margin-top: 0;
+  color: #1976D2;
+  /* Darker blue for sub-heading */
+  font-size: 1.2em;
+}
+
+.detailed-probabilities ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.detailed-probabilities li {
+  padding: 8px 0;
+  border-bottom: 1px dashed #bbdefb;
+  /* Light blue dashed line */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1em;
+}
+
+.detailed-probabilities li:last-child {
+  border-bottom: none;
+}
+
+
+/* Foot Display Section */
+.foot-display-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 1000px;
+  /* เพิ่ม max-width */
+}
+
+.foot-area {
+  flex: 1;
+  min-width: 320px;
+  background-color: var(--card-background);
+  padding: 25px 0px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px var(--shadow-medium);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.15s ease;
+}
+
+.foot {
+  position: relative;
+  width: 280px;
+  height: 480px;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  background-color: #fcfcfc;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+  padding: 10px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+  margin-top: 15px;
+}
+
+#leftFoot {
+  background-image: url('./img/footprintleft.png');
+  /* Placeholder image */
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#rightFoot {
+  background-image: url('./img/footprintright.png');
+  /* Placeholder image */
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  opacity: 0.85;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.1s ease, transform 0.05s ease;
+}
+
+.sensor-graph {
+  width: 70px;
+  height: 35px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px var(--shadow-light);
+  z-index: 10;
+  position: absolute;
+}
+
+.sensor-graph-wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background-color: transparent;
+}
+
+.sensor-label {
+  font-size: 11px;
+  text-align: center;
+  margin: 0;
+  color: #555;
+  font-weight: 300;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* display: flex; /* <-- ลบบรรทัดนี้ออก */
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  /* ไม่จำเป็นต้องใช้เมื่อ display: flex */
+  padding: 30px;
+  border: 1px solid #888;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close-button {
+  color: #aaa;
+  /* float: right; /* ไม่จำเป็นต้องใช้เมื่อ position: absolute */
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  /* เพิ่ม cursor pointer */
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-title {
+  color: #2e7d32;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.modal-chart-container {
+  width: 100%;
+  max-height: 400px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.stats-table th,
+.stats-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  /* เพิ่ม padding */
+  text-align: center;
+}
+
+.stats-table th {
+  background-color: #f2f2f2;
+  color: var(--primary-color);
+  font-weight: 600;
+  /* เพิ่มความหนาของตัวอักษร */
+}
+
+.download-button {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 12px 25px;
+  /* เพิ่ม padding */
+  border: none;
+  border-radius: 10px;
+  /* เพิ่ม border-radius */
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  font-weight: 500;
+}
+
+.download-button:hover {
+  background-color: #1976D2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.countdown-display {
+  /* เปลี่ยนจาก #countdownDisplay เป็น class */
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #d32f2f;
+  margin-bottom: 15px;
+  display: none;
+  /* Hidden by default */
+  min-height: 1.5em;
+  /* เพื่อป้องกันการกระโดดของ layout */
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .main-wrapper {
+    gap: 20px;
+  }
+
+  .controls-section {
+    padding: 25px;
+    gap: 15px;
+  }
+
+  .analysis-section {
+    padding: 25px;
+  }
+
+  .foot-display-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .foot-area {
+    width: 90%;
+    max-width: 380px;
+  }
+
+  .foot {
+    width: 280px;
+    height: 480px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .controls-section {
+    padding: 20px;
+    gap: 10px;
+  }
+
+  .input-group,
+  .button-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .controls-section input[type="number"],
+  .controls-section button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .foot-area {
+    min-width: unset;
+    /* ยกเลิก min-width */
+    width: 95%;
+    max-width: 320px;
+  }
+
+  .foot {
+    width: 250px;
+    height: 420px;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .modal-title {
+    font-size: 1.6em;
+  }
+
+  .stats-table th,
+  .stats-table td {
+    font-size: 0.85em;
+    padding: 8px;
+  }
+
+  .download-button {
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  .controls-section,
+  .analysis-section,
+  .foot-display-section {
+    gap: 15px;
+  }
+
+  .controls-section {
+    padding: 150px;
+  }
+
+  .posture-analysis-card {
+    padding: 0px;
+  }
+
+  .detailed-probabilities {
+    padding: 15px;
+  }
+
+  .detailed-probabilities li {
+    font-size: 1em;
+    padding: 6px 0;
+  }
+
+  .foot {
+    width: 220px;
+    height: 380px;
+  }
+
+  .dot {
+    width: 16px;
+    height: 16px;
+  }
+
+  .sensor-graph {
+    width: 60px;
+    height: 30px;
+  }
+
+  .sensor-label {
+    font-size: 10px;
+  }
+
+  .modal-content {
+    padding: 15px;
+  }
+
+  .modal-title {
+    font-size: 1.4em;
+  }
+}

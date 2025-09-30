@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>เครื่องตรวจสอบแรงกดเท้า (Foot Pressure Monitor)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">l
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="topbar">
+            <h1>เครื่องตรวจสอบแรงกดเท้าอัตโนมัติ</h1>
+            <button onclick="connectToESP32()" class="connect_but">เชื่อมต่อ ESP32</button>
+        </div>
+
+        <div class="control_analysis">
+            <div class="controls-section">
+                <div class="weightsum">
+                    <label for="weight_sum">น้ำหนักรวม (kg): <span id="weight_sum">0</span></label>
+
+                </div>
+                <div class="button-group">
+                    <button id="recordButton" onclick="startRecording()">บันทึก</button>
+                    <button id="stopRecordButton" onclick="stopRecording()" disabled>หยุดบันทึก</button>
+                    <button id="tareButton">Tare</button>
+                    <button id="calibrateButton">Calibrate</button>
+                </div>
+
+                <div id="countdownDisplay" class="countdown-display"></div>
+
+                <!-- ส่วนแสดงข้อความแจ้งเตือน/สถานะทั่วไป -->
+                <div id="statusMessage" class="status-message">
+                    <p id="postureResult">กำลังรอการเชื่อมต่อ...</p>
+                </div>
+            </div>
+
+            <div class="analysis-section">
+                <div class="posture-analysis-card">
+                    <div id="detailedPostureResult" class="detailed-probabilities">
+                        <p>ความน่าจะเป็นของแต่ละท่าทางจะแสดงที่นี่เมื่อได้รับข้อมูล</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="foot-display-section">
+            <div class="foot-area">
+                <h2>เท้าซ้าย</h2>
+                <div class="foot" id="leftFoot"></div>
+            </div>
+            <div class="foot-area">
+                <h2>เท้าขวา</h2>
+                <div class="foot" id="rightFoot"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="recordModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2 class="modal-title">ผลการบันทึกแรงกดเท้า</h2>
+            <div class="modal-chart-container">
+                <canvas id="recordedDataChart"></canvas>
+            </div>
+            <h3>สถิติข้อมูลเซ็นเซอร์</h3>
+            <table class="stats-table">
+                <thead>
+                    <tr>
+                        <th>เซ็นเซอร์</th>
+                        <th>สูงสุด (กรัม)</th>
+                        <th>ต่ำสุด (กรัม)</th>
+                        <th>เฉลี่ย (กรัม)</th>
+                    </tr>
+                </thead>
+                <tbody id="statsTableBody">
+                </tbody>
+            </table>
+            <button class="download-button" id="downloadButton" onclick="downloadCSV()">ดาวน์โหลด CSV</button>
+        </div>
+    </div>
+
+    <script src = 'script.js'></script>
+</body>
+
+</html>
